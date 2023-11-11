@@ -12,7 +12,7 @@ const Login = () => {
   const [error] = useState("");
   const [message, setMessage] = useState("");
   const othermessage = location.state?.from;
-  console.log(othermessage);
+  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -70,7 +70,7 @@ const Login = () => {
         </label>
         <br />
         <button type="submit">Login</button>
-        {message && <p>{message}</p>}
+        {message && <p style={{color:'red'}}>{message}</p>}
       </form>
       <p>
         New User? <a href="/registration">Register here!</a>

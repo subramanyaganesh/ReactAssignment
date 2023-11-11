@@ -27,7 +27,7 @@ const Registration = () => {
       // Append the new user data to the array
       existingUsers.push(username+'@'+password+'@'+usertype);
       localStorage.setItem("key", JSON.stringify(existingUsers));
-      navigate("/login");
+      navigate("/login", {state:{from:'User created successfully'}});
     }
   };
 
