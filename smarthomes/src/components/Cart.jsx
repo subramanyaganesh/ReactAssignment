@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "./SideBar";
 import Logo from "./Logo";
 import { useCart } from "./CartContext";
+import Carousel from "./Carousel";
+import { useState, useEffect } from "react";
 
 const buttonStyle = {
   WebkitTextSizeAdjust: "100%",
@@ -20,14 +22,23 @@ const buttonStyle = {
   width: "200px",
   marginLeft: "10px",
   marginRight: "auto",
+  cursor: "pointer",
 };
+
 const Cart = () => {
   const navigate = useNavigate();
+  const { cartItems, removeFromCart } = useCart();
+  const [carouselItems, setCarouselItems] = useState([]); // State for items to be displayed in Carousel
 
-  const { cartItems } = useCart();
-  const calculateTotal = () => {
-    return cartItems.reduce((total, item) => total + item.price, 0);
-  };
+  
+  
+  const calculateTotal = () =>  cartItems.reduce((total, item) => total + item.price, 0).toFixed(2);
+
+
+  useEffect(() => {
+    // Update carouselItems whenever cartItems changes
+    setCarouselItems(cartItems);
+  }, [cartItems]);
 
   const handleCheckout = () => {
     navigate("/Checkout", {
@@ -35,6 +46,10 @@ const Cart = () => {
         cartItems,
       },
     });
+  };
+
+  const handelRemove = (item) => {
+    removeFromCart(item);
   };
 
   const textStyle = {
@@ -79,11 +94,18 @@ const Cart = () => {
                   <tr key={index}>
                     <td style={textStyle}>{item.name}</td>
                     <td style={textStyle}>${item.price}</td>
+                    <button
+                      onClick={() => handelRemove(item)}
+                      style={{ ...buttonStyle, width: "80px" }}
+                    >
+                      {" "}
+                      Remove
+                    </button>
                   </tr>
                 ))}
               </tbody>
               <td
-                colSpan="2"
+                colSpan="3"
                 style={{
                   textAlign: "center",
                   color: "purple",
@@ -104,6 +126,8 @@ const Cart = () => {
           </p>
         )}
       </div>
+
+      {cartItems.length > 0 && <Carousel items={carouselItems} />}
     </div>
   );
 };

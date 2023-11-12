@@ -29,6 +29,7 @@ const ProductAdd = () => {
   const [productManufacturer, setProductManufacturer] = useState("");
   const [productCondition, setProductCondition] = useState("");
   const [productDiscount, setProductDiscount] = useState("");
+  const [productDescription, setProductDescription] = useState("");
   const [product, setProduct] = useState("");
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const formStyle = {
@@ -47,16 +48,19 @@ const ProductAdd = () => {
 
   const handleForm = (e) => {
     e.preventDefault();
+   
     const productData = {
       id: productId,
       name: productName,
       price: productPrice,
-      image: `images/${type}/${productImage}`,
+      image: productImage,
       manufacturer: productManufacturer,
       condition: productCondition,
       discount: productDiscount,
+      description: productDescription,
       type: type,
     };
+    console.log("form submitted",productData);
     addProduct(productData);
 
     setSubmitSuccess(true);
@@ -153,6 +157,22 @@ const ProductAdd = () => {
                     required
                     style={inputStyle}
                     onChange={(e) => setProductName(e.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h3>Product Description</h3>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="productDescription"
+                    value={productDescription}
+                    className="input"
+                    required
+                    style={inputStyle}
+                    onChange={(e) => setProductDescription(e.target.value)}
                   />
                 </td>
               </tr>

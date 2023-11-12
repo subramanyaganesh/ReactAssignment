@@ -14,6 +14,8 @@ const ProductUpdate = () => {
   const [productCondition, setProductCondition] = useState("");
   const [productDiscount, setProductDiscount] = useState("");
   const [product, setProduct] = useState("");
+  const [productDescription, setProductDescription] = useState("");
+
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const formStyle = {
     display: "flex",
@@ -53,7 +55,8 @@ const ProductUpdate = () => {
       id: productId,
       name: productName,
       price: productPrice,
-      image: `images/${type}/${productImage}`,
+      image: productImage,
+      description: productDescription,
       manufacturer: productManufacturer,
       condition: productCondition,
       discount: productDiscount,
@@ -180,6 +183,22 @@ const ProductUpdate = () => {
                     className="input"
                     style={inputStyle}
                     onChange={(e) => setProductImage(e.target.value)}
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <h3>Product Description</h3>
+                </td>
+                <td>
+                  <input
+                    type="text"
+                    name="productDescription"
+                    value={productDescription}
+                    className="input"
+                    required
+                    style={inputStyle}
+                    onChange={(e) => setProductDescription(e.target.value)}
                   />
                 </td>
               </tr>

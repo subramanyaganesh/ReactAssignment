@@ -4,8 +4,8 @@ import React, { createContext, useContext, useState } from 'react';
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [loggedUser, setLoggedUser] = useState({username:"q",password:"q",usertype:"retailer"});
-
+  const [loggedUser, setLoggedUser] = useState();
+//{username:"q",password:"q",usertype:"retailer"}
   const login = (username, password,usertype) => {
     setLoggedUser({ username, password ,usertype});
   };

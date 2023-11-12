@@ -2,11 +2,13 @@ import React from "react";
 import Logo from "./Logo";
 import Sidebar from "./SideBar";
 
+
 const imageStyle = {
   width: '600px',
   display: 'block',
   marginLeft: 'auto',
   marginRight: 'auto',
+  marginTop: '30px',
 };
 
 const Home = () => {
@@ -15,17 +17,19 @@ const Home = () => {
       <Logo />
       <Sidebar />
       <div>
-        <img
+        <img 
           src="images/smartHome.jpeg"
           style={imageStyle}
           alt="Smart Home"
         />
         <br />
-        <h2>Connecting the your house with you</h2>
+        <h2 style={{textAlign:'center', color:'pink'}}>Connecting the your house with you</h2>
         <br />
-        <h1>Best Prices Guarenteed</h1>
+        <h1 style={{textAlign:'center', color:'pink'}}>Best Prices Guarenteed</h1>
       </div>
+     
     </div>
+   
   );
 };
 

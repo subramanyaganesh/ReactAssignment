@@ -128,9 +128,10 @@ const Lighting = (e) => {
                 }}
               >
                 <h3>{lighting.name}</h3>
-                <strong>${lighting.price}</strong>
+                <strong style={{color:'greenyellow'}}>${loggedUser?.usertype==='retailer'? lighting.price*0.6:lighting.price}</strong>
                 <ul>
                   <li style={item}>
+                  <p style={{fontStyle:'italic',color:'ThreeDFace'}}>{lighting.description}</p>
                     <img
                       style={img}
                       src={`images/${lighting.type}/${lighting.image}`}

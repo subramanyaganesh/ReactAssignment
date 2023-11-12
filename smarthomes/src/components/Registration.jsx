@@ -1,6 +1,46 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '300hv',
+  
+};
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '20px',
+  border: '2px solid #ccc',
+  borderRadius: '8px',
+  gap: '5px'
+};
+
+
+const shopitem = {
+  WebkitTextSizeAdjust: "100%",
+  WebkitTapHighlightColor: "rgba(0,0,0,0)",
+  lineHeight: "1.42857143",
+  color: "#333",
+  fontFamily: 'Georgia, "Times New Roman", Times, serif',
+  fontSize: "12px !important",
+  borderSpacing: 0,
+  borderCollapse: "collapse",
+  boxSizing: "unset",
+  borderRadius: "5px",
+  border: "1px solid #000",
+  padding: "4px",
+  width: "200px",
+  marginLeft: "auto",
+  marginRight: "auto",
+  marginTop: "20px",
+  
+};
+
 const Registration = () => {
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
@@ -32,11 +72,11 @@ const Registration = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      <div>
+    <div style={containerStyle}>
+      <h2 style={{color:'purple'}}>Register</h2>
+      <div >
         {error && <h4 style={{ color: "red" }}>{error}</h4>}
-        <form onSubmit={handleRegistration}>
+        <form style={formStyle} onSubmit={handleRegistration}>
           <label>Username:</label>
           <input
             type="text"
@@ -104,7 +144,7 @@ const Registration = () => {
           </select>
 
           <div>
-            <button type="submit">Create User</button>
+            <button style={shopitem} type="submit">Create User</button>
             {message && <p>{message}</p>}
           </div>
         </form>

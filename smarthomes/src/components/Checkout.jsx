@@ -41,7 +41,7 @@ const Checkout = () => {
 
   const getdeliveryDate = () => {
     const futureDate = new Date();
-    const randomNumber = Math.floor(Math.random() * (18 - 7 + 1)) + 7;
+    const randomNumber = Math.floor(Math.random() * (21 - 14 + 1)) + 14;
     futureDate.setDate(new Date().getDate() + randomNumber);
 
     // Format the date if needed

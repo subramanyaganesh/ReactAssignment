@@ -11,12 +11,17 @@ export const CartProvider = ({ children }) => {
     setCartItems([...cartItems, item]);
   };
 
+  const removeFromCart = (item) => {
+    cartItems.splice(cartItems.indexOf(item), 1);
+    setCartItems([...cartItems]);
+  };
+
   const clearCart = () => {
     setCartItems([]);
   }
 
   return (
-    <CartContext.Provider value={{ count, setCount, cartItems, addToCart,clearCart }}>
+    <CartContext.Provider value={{ count, setCount, cartItems,removeFromCart, addToCart,clearCart }}>
       {children}
     </CartContext.Provider>
   );

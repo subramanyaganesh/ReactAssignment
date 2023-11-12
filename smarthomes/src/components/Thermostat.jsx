@@ -127,9 +127,10 @@ const Thermostat = (e) => {
                 }}
               >
                 <h3>{doorLock.name}</h3>
-                <strong>${doorLock.price}</strong>
+                <strong style={{color:'greenyellow'}}>${loggedUser?.usertype==='retailer'? doorLock.price*0.6:doorLock.price}</strong>
                 <ul>
                   <li style={item}>
+                  <p style={{fontStyle:'italic',color:'ThreeDFace'}}>{doorLock.description}</p>
                     <img
                       style={img}
                       src={`images/${doorLock.type}/${doorLock.image}`}

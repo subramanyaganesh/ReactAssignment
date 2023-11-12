@@ -42,6 +42,7 @@ const item = {
   marginBottom: "5px",
   marginTop: "6px",
   border: "1px solid #000",
+  padding: "1px",
 };
 
 const shopitem = {
@@ -115,9 +116,12 @@ const DoorBell = (e) => {
             {batch.map((doorBell, index) => (
               <div key={index} style={{ marginRight: "10px", border: "1px solid #ddd", padding: "10px", borderRadius: "8px",marginBottom:"10px", marginLeft:"40px" }}>
                 <h3>{doorBell.name}</h3>
-                <strong>${doorBell.price}</strong>
+                <strong style={{color:'greenyellow'}}>${loggedUser?.usertype==='retailer'? doorBell.price*0.6:doorBell.price}</strong>
+                
                 <ul>
+                  {console.log(doorBell)}
                   <li style={item}>
+                  <p style={{fontStyle:'italic',color:'ThreeDFace'}}>{doorBell.description}</p>
                     <img style={img} src={`images/${doorBell.type}/${doorBell.image}`} alt="" />
                   </li>
                   <button

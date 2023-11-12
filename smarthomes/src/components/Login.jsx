@@ -1,6 +1,42 @@
 import React, { useState } from "react";
-import { useNavigate,useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useUser } from "./UserContext";
+
+const containerStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100vh',
+};
+
+const formStyle = {
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  padding: '20px',
+  border: '2px solid #ccc',
+  borderRadius: '8px',
+};
+
+
+const shopitem = {
+  WebkitTextSizeAdjust: "100%",
+  WebkitTapHighlightColor: "rgba(0,0,0,0)",
+  lineHeight: "1.42857143",
+  color: "#333",
+  fontFamily: 'Georgia, "Times New Roman", Times, serif',
+  fontSize: "12px !important",
+  borderSpacing: 0,
+  borderCollapse: "collapse",
+  boxSizing: "unset",
+  borderRadius: "5px",
+  border: "1px solid #000",
+  padding: "4px",
+  width: "200px",
+  marginLeft: "auto",
+  marginRight: "auto",
+};
 
 const Login = () => {
   const navigate = useNavigate();
@@ -12,7 +48,6 @@ const Login = () => {
   const [error] = useState("");
   const [message, setMessage] = useState("");
   const othermessage = location.state?.from;
-  
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -31,11 +66,14 @@ const Login = () => {
   };
 
   return (
-    <div>
-      <h2>Login</h2>
-      {othermessage && <p style={{ color: 'red' }}>{othermessage}</p>}
+    <div style={containerStyle}>
+      <h2 style={{color:'purple'}}>Login</h2>
+      {othermessage && <p style={{ color: "red" }}>{othermessage}</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <form onSubmit={handleLogin}>
+      <form
+        style={formStyle}
+        onSubmit={handleLogin}
+      >
         <label>
           Username:
           <input
@@ -69,8 +107,10 @@ const Login = () => {
           </select>
         </label>
         <br />
-        <button type="submit">Login</button>
-        {message && <p style={{color:'red'}}>{message}</p>}
+        <button style={shopitem} type="submit">
+          Login
+        </button>
+        {message && <p style={{ color: "red" }}>{message}</p>}
       </form>
       <p>
         New User? <a href="/registration">Register here!</a>

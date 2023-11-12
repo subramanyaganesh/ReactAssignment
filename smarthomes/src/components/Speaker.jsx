@@ -127,9 +127,10 @@ const Speaker = (e) => {
                 }}
               >
                 <h3>{speaker.name}</h3>
-                <strong>${speaker.price}</strong>
+                <strong style={{color:'greenyellow'}}>${loggedUser?.usertype==='retailer'? speaker.price*0.6:speaker.price}</strong>
                 <ul>
                   <li style={item}>
+                  <p style={{fontStyle:'italic',color:'ThreeDFace'}}>{speaker.description}</p>
                     <img
                       style={img}
                       src={`images/${speaker.type}/${speaker.image}`}
